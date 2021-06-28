@@ -1,10 +1,17 @@
+# --- Python Mini Project - Library Management System -----
+# Create list_of_books.txt file 
+# List of books :
+
 import datetime
 import os
-# os.getcwd()
+os.getcwd()
+
 class LMS:
     """
     This class is used to keep records of books library.
-    It has total four modules: "Display Books", "Lend Books", "Add Books" """
+    It has total four modules: 'Display Books', 'Lend Books', 'Add Books', 'Return Books'
+    'list_of_books' should be txt file. 'library_name' should be string.
+    """
 
     def __init__(self, list_of_books, library_name):
         self.list_of_books = "list_of_books.txt"
@@ -13,10 +20,17 @@ class LMS:
         id = 101
         with open(self.list_of_books) as b:
             content = b.readlines()
-            for line in content:
-                self.books_dict.update({str(id):{'books_title':line.replace("\n",""),'lender_name':'','lend_date':'', 'status':'Available'}})
-                id = id + 1  
-                
+        for line in content:
+            self.books_dict.update({str(id):{'books_title':line.replace("\n",""),'lender_name':'','lend_date':'', 'status':'Available'}})
+            id += 1    
+
+    def display_books(self):
+        print("------------------------List of Books---------------------")
+        print("Books ID","\t", "Title")
+        print("----------------------------------------------------------")
+        for key, value in self.books_dict.items():
+            print(key,"\t\t", value.get("books_title"), "- [", value.get("status"),"]")
+
     def Issue_books(self):
         books_id = input("Enter Books ID : ")
         current_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -38,7 +52,7 @@ class LMS:
         new_books = input("Enter Books Title : ")
         if new_books == "":
             return self.add_books()
-        elif len(new_books) > 25:
+        elif len(new_books) > 20:
             print("Books title length is too long !!! Title length limit is 20 characters")
             return self.add_books()
         else:
@@ -73,8 +87,8 @@ if __name__ == "__main__":
                 print("Press", key, "To", value)
             key_press = input("Press Key : ").lower()
             if key_press == "i":
-                print("\nCurrent Selection : LEND BOOK\n")
-                mylms.lend_books()
+                print("\nCurrent Selection : ISSUE BOOK\n")
+                mylms.Issue_books()
                 
             elif key_press == "a":
                 print("\nCurrent Selection : ADD BOOK\n")
