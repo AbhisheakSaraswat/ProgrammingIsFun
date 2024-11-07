@@ -1,5 +1,5 @@
 
-<center><b>[Programming Is Fun YouTube Channel](https://www.youtube.com/@ProgrammingIsFunn)</b></center>
+<center><b>[ProgrammingIsFun](https://www.youtube.com/@ProgrammingIsFunn)</b></center>
 
 Loan Risk Analysis Using Exploratory Data Analysis (EDA): Identifying Defaulters and Reducing Financial Risk in Lending
 
